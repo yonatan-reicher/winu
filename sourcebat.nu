@@ -11,7 +11,7 @@ def --env sourcebat [
 
   # Run the command and print its output as it is running.
   # `str join` will block until EOF.
-  let stdout = run-external --redirect-combine cmd.exe /c ...$cmd | each { |line| print -n $line; $line } | str join
+  let stdout = run-external cmd.exe /c ...$cmd o+e>| each { |line| print -n $line; $line } | str join
   
   let vars = open $tmp
   rm $tmp # Clean up the temp file.
